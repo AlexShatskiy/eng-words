@@ -3,11 +3,10 @@
 # dependencies
 /node_modules
 /client/node_modules
-/server/node_modules
 /client/.env
-/server/.env
 /.pnp
 .pnp.js
+.idea
 
 # testing
 /coverage
@@ -25,3 +24,9 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# server
+/server/node_modules
+/server/.env
+/server/.idea
+/server/dist
