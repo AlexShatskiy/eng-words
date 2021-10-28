@@ -5,14 +5,16 @@ import {WordDto} from "../dto/word.entity";
 
 @Entity("eng_words")
 export class EngWordEntity extends Word {
-  @ManyToMany(() => RuWordEntity, ru_word => ru_word.word)
+  @ManyToMany(() => RuWordEntity, ru_word => ru_word.word, {
+    cascade: true
+  })
   @JoinTable()
   ruWords: RuWordEntity[];
 
   toDto(): WordDto {
     return {
       word: this.word,
-      ruTranslations: this.ruWords.map(item => item.word)
+      ruTranslations: this.ruWords?.map(item => item.word) || []
     }
   }
 }

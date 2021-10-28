@@ -1,4 +1,4 @@
-import { Controller, Get } from '@nestjs/common';
+import {Body, Controller, Get, Post} from '@nestjs/common';
 import { WordsService } from './words.service';
 import {WordDto} from "./dto/word.entity";
 
@@ -7,8 +7,12 @@ export class WordsController {
   constructor(private readonly wordsService: WordsService) {}
 
   @Get()
-  async findAll(): Promise<WordDto[]> {
-    const words = await this.wordsService.findAll();
-    return words.map(item => item.toDto());
+  findAll(): Promise<WordDto[]> {
+    return this.wordsService.findAll();
+  }
+
+  @Post()
+  create(@Body() createWordDto: WordDto): Promise<WordDto> {
+    return this.wordsService.create(createWordDto);
   }
 }
