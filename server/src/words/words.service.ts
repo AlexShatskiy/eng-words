@@ -8,7 +8,6 @@ import {RuWordEntity} from "./entity/ru-word.entity";
 @Injectable()
 export class WordsService {
   constructor(
-    @InjectRepository(EngWordEntity)
     private readonly connection: Connection,
   ) {}
 
